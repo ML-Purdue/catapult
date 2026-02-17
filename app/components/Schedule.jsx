@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-function SpiralLines() {
+function SpiralLines({ mouseRef }) {
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -12,8 +12,6 @@ function SpiralLines() {
 
     let width = canvas.parentElement.offsetWidth;
     let height = canvas.parentElement.offsetHeight;
-    canvas.width = width;
-    canvas.height = height;
     const dpr = window.devicePixelRatio || 1;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
@@ -22,67 +20,89 @@ function SpiralLines() {
     let animId;
     let time = 0;
 
-    // Define spiral configs — two mirrored spirals on left and right
-    const spirals = [
-      { cx: 0, cy: 0.5, direction: 1 },
-      { cx: 1, cy: 0.5, direction: -1 },
-    ];
+    const mouse = mouseRef.current;
+    const distortRadius = 400;
+    const distortStrength = 70;
+
+    // Distortion helper: push point away from mouse
+    function distort(px, py) {
+      const dx = px - mouse.x;
+      const dy = py - mouse.y;
+      const dist = Math.hypot(dx, dy);
+      if (dist > distortRadius || dist < 1) return { x: px, y: py };
+      const factor = (1 - dist / distortRadius);
+      const power = factor * factor * distortStrength;
+      return {
+        x: px + (dx / dist) * power,
+        y: py + (dy / dist) * power,
+      };
+    }
 
     function draw() {
       ctx.clearRect(0, 0, width, height);
       time += 0.003;
 
+      // Read live mouse position from shared ref
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      const mActive = mouseRef.current.active;
+      mouse.x = mx;
+      mouse.y = my;
+      mouse.active = mActive;
+
       // ── ANIMATED GRID ──
-      const gridSpacing = 60;
+      const gridSpacing = 35;
       const cols = Math.ceil(width / gridSpacing) + 1;
       const rows = Math.ceil(height / gridSpacing) + 1;
 
-      // Vertical grid lines with pulse
+      // Vertical grid lines — distorted
       for (let c = 0; c < cols; c++) {
         const x = c * gridSpacing;
         const distFromCenter = Math.abs(x - width / 2) / (width / 2);
         const pulse = Math.sin(time * 1.2 + c * 0.3) * 0.5 + 0.5;
-        const opacity = (0.03 + pulse * 0.025) * (1 - distFromCenter * 0.5);
+        const opacity = (0.1 + pulse * 0.07) * (1 - distFromCenter * 0.5);
 
         ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
+        const step = 8;
+        for (let py = 0; py <= height; py += step) {
+          const p = distort(x, py);
+          if (py === 0) ctx.moveTo(p.x, p.y);
+          else ctx.lineTo(p.x, p.y);
+        }
         ctx.strokeStyle = `rgba(107, 229, 190, ${opacity})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
 
-      // Horizontal grid lines with pulse
+      // Horizontal grid lines — distorted
       for (let r = 0; r < rows; r++) {
         const y = r * gridSpacing;
         const distFromCenter = Math.abs(y - height / 2) / (height / 2);
         const pulse = Math.sin(time * 1.5 + r * 0.25) * 0.5 + 0.5;
-        const opacity = (0.03 + pulse * 0.025) * (1 - distFromCenter * 0.4);
+        const opacity = (0.1 + pulse * 0.07) * (1 - distFromCenter * 0.4);
 
         ctx.beginPath();
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
+        const step = 8;
+        for (let px = 0; px <= width; px += step) {
+          const p = distort(px, y);
+          if (px === 0) ctx.moveTo(p.x, p.y);
+          else ctx.lineTo(p.x, p.y);
+        }
         ctx.strokeStyle = `rgba(107, 229, 190, ${opacity})`;
         ctx.lineWidth = 0.5;
         ctx.stroke();
       }
 
-      // ── GRID INTERSECTION DOTS ──
-      for (let c = 0; c < cols; c++) {
-        for (let r = 0; r < rows; r++) {
-          const x = c * gridSpacing;
-          const y = r * gridSpacing;
-          const dist = Math.hypot(x - width / 2, y - height / 2);
-          const maxDist = Math.hypot(width / 2, height / 2);
-          const pulse = Math.sin(time * 2 + dist * 0.008) * 0.5 + 0.5;
-          const dotOpacity = (0.06 + pulse * 0.08) * (1 - (dist / maxDist) * 0.6);
-          const dotSize = 1 + pulse * 1;
-
-          ctx.beginPath();
-          ctx.arc(x, y, dotSize, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(107, 229, 190, ${dotOpacity})`;
-          ctx.fill();
-        }
+      // ── CURSOR GLOW ──
+      if (mouse.active) {
+        const glowGrad = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, distortRadius);
+        glowGrad.addColorStop(0, 'rgba(107, 229, 190, 0.06)');
+        glowGrad.addColorStop(0.5, 'rgba(107, 229, 190, 0.02)');
+        glowGrad.addColorStop(1, 'rgba(107, 229, 190, 0)');
+        ctx.beginPath();
+        ctx.arc(mouse.x, mouse.y, distortRadius, 0, Math.PI * 2);
+        ctx.fillStyle = glowGrad;
+        ctx.fill();
       }
 
       // ── SCANNING LINES (sharp horizontal sweeps) ──
@@ -107,76 +127,16 @@ function SpiralLines() {
         const opacity = 0.025 + Math.sin(time * 1.8 + d) * 0.015;
 
         ctx.beginPath();
-        ctx.moveTo(offset + animOffset - height, 0);
-        ctx.lineTo(offset + animOffset, height);
+        const diagStep = 12;
+        for (let t2 = 0; t2 <= 1; t2 += diagStep / Math.hypot(width, height)) {
+          const px = offset + animOffset - height + t2 * height;
+          const py = t2 * height;
+          const p = distort(px, py);
+          if (t2 === 0) ctx.moveTo(p.x, p.y);
+          else ctx.lineTo(p.x, p.y);
+        }
         ctx.strokeStyle = `rgba(107, 229, 190, ${opacity})`;
         ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-
-      // ── SPIRALS ──
-      for (const spiral of spirals) {
-        const cx = spiral.cx * width;
-        const cy = spiral.cy * height;
-
-        const numArms = 6;
-        for (let arm = 0; arm < numArms; arm++) {
-          const armOffset = (arm / numArms) * Math.PI * 2;
-          const baseOpacity = 0.12 - arm * 0.012;
-
-          ctx.beginPath();
-          const segments = 180;
-          for (let j = 0; j <= segments; j++) {
-            const t = j / segments;
-            const angle = t * Math.PI * 5 + armOffset + time * spiral.direction;
-            const maxR = Math.min(width, height) * 0.55;
-            const radius = t * maxR * (0.3 + (arm / numArms) * 0.7);
-
-            const x = cx + Math.cos(angle) * radius;
-            const y = cy + Math.sin(angle) * radius;
-
-            if (j === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
-          }
-
-          ctx.strokeStyle = `rgba(107, 229, 190, ${baseOpacity})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-
-        // Concentric ring bands
-        const numRings = 4;
-        for (let r = 0; r < numRings; r++) {
-          const ringT = (r + 1) / (numRings + 1);
-          const maxR = Math.min(width, height) * 0.55;
-          const ringRadius = ringT * maxR;
-          const wobble = Math.sin(time * 2 + r) * 4;
-
-          ctx.beginPath();
-          ctx.arc(cx, cy, ringRadius + wobble, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(107, 229, 190, ${0.06 - r * 0.01})`;
-          ctx.lineWidth = 0.8;
-          ctx.stroke();
-        }
-      }
-
-      // ── HORIZONTAL FLOWING LINES ──
-      const numLines = 10;
-      for (let i = 0; i < numLines; i++) {
-        const t = (i + 1) / (numLines + 1);
-        const baseY = t * height;
-        const opacity = 0.04 + Math.sin(t * Math.PI) * 0.03;
-
-        ctx.beginPath();
-        const step = 4;
-        for (let x = 0; x <= width; x += step) {
-          const wave = Math.sin((x / width) * Math.PI * 3 + time * 1.5 + i * 0.8) * 12;
-          const y = baseY + wave;
-          if (x === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = `rgba(107, 229, 190, ${opacity})`;
-        ctx.lineWidth = 0.7;
         ctx.stroke();
       }
 
@@ -233,7 +193,7 @@ function SpiralLines() {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [mouseRef]);
 
   return (
     <canvas
@@ -287,6 +247,7 @@ export default function Schedule() {
   const [activeDay, setActiveDay] = useState(0);
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
+  const mouseRef = useRef({ x: -9999, y: -9999, active: false });
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -297,9 +258,28 @@ export default function Schedule() {
     return () => observer.disconnect();
   }, []);
 
+  const handleMouseMove = (e) => {
+    const rect = sectionRef.current.getBoundingClientRect();
+    mouseRef.current.x = e.clientX - rect.left;
+    mouseRef.current.y = e.clientY - rect.top;
+    mouseRef.current.active = true;
+  };
+
+  const handleMouseLeave = () => {
+    mouseRef.current.active = false;
+    mouseRef.current.x = -9999;
+    mouseRef.current.y = -9999;
+  };
+
   return (
-    <section ref={sectionRef} id="schedule" className="relative py-24 overflow-hidden">
-      <SpiralLines />
+    <section
+      ref={sectionRef}
+      id="schedule"
+      className="relative py-24 overflow-hidden"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      <SpiralLines mouseRef={mouseRef} />
       {/* Content wrapper */}
       <div className="relative z-10 max-w-6xl mx-auto px-6">
       {/* Section heading */}
