@@ -91,7 +91,6 @@ export default function PrizeCategories() {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                clipPath: cat.clip,
                 background: 'rgba(255,255,255,0.06)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
@@ -101,7 +100,6 @@ export default function PrizeCategories() {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                clipPath: cat.clip,
                 background: cat.blob,
                 opacity: isHovered ? 1 : 0.8,
                 transition: 'opacity 0.4s ease',
@@ -111,7 +109,6 @@ export default function PrizeCategories() {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                clipPath: cat.clip,
                 boxShadow: isHovered
                   ? 'inset 0 0 0 1.5px rgba(255,255,255,0.55)'
                   : 'inset 0 0 0 1px rgba(255,255,255,0.18)',
@@ -122,7 +119,6 @@ export default function PrizeCategories() {
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                clipPath: cat.clip,
                 background: 'linear-gradient(160deg, rgba(255,255,255,0.12) 0%, transparent 50%)',
                 pointerEvents: 'none',
               }} />
