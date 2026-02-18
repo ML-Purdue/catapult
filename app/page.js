@@ -5,6 +5,7 @@ import FAQ from "./components/FAQ";
 import About from "./components/About";
 import HorizontalLines from "./components/Lines";
 import SpiralToLines from "./components/MorphingSpiral";
+import Sponsors from "./components/Sponsor";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <About />
       <Schedule />
       <FAQ />
+      <Sponsors />
     </div>
   );
 }
