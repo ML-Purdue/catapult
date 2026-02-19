@@ -24,7 +24,7 @@ export default function NavBar() {
             <div>
                 <Image
                     className="ml-2"
-                    src="/TA.png"
+                    src="/ta.png"
                     alt="Catapult Logo"
                     width={60}
                     height={60}
