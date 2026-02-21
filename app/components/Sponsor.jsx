@@ -7,7 +7,7 @@ import RippleBackground from "./Circles";
 const sponsors = [
   { name: "Purdue Innovates", logo: "/purdueinnovates.png", url: "#" },
   { name: "TE Connectivity", logo: "/tecon.webp", url: "#" },
-  { name: "Purdue CS", logo: null, url: "#" },
+  { name: "Purdue CS", logo: "/CompSci_H-Full-Reverse-RGB.svg", url: "#" },
   { name: "Jane Street", logo: "/janestreet.png", url: "#" },
   { name: "Benevity", logo: "/ben.png", url: "#" },
 ];
