@@ -20,7 +20,7 @@ export default function Landing() {
                     <Lottie
                         animationData={catapultAnimation}
                         loop={false}
-                        style={{ width: 800 }}
+                        style={{ width: "min(800px, 90vw)" }}
                     />
                 )}
             </div>
