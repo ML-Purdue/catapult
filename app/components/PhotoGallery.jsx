@@ -31,22 +31,20 @@ export default function PhotoGallery() {
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative w-full py-20 overflow-hidden"
-    >
+    <div ref={sectionRef} className="relative w-full py-20 overflow-hidden">
       {/* teal decorative accents */}
       <div
         className="absolute top-0 left-0 right-0 h-px"
         style={{
-          background: "linear-gradient(90deg, transparent, #6be5be, transparent)",
+          background:
+            "linear-gradient(90deg, transparent, #6be5be, transparent)",
           opacity: visible ? 1 : 0,
           transition: "opacity 1s ease",
         }}
@@ -54,7 +52,8 @@ export default function PhotoGallery() {
       <div
         className="absolute bottom-0 left-0 right-0 h-px"
         style={{
-          background: "linear-gradient(90deg, transparent, #6be5be, transparent)",
+          background:
+            "linear-gradient(90deg, transparent, #6be5be, transparent)",
           opacity: visible ? 1 : 0,
           transition: "opacity 1s ease",
         }}
@@ -64,7 +63,8 @@ export default function PhotoGallery() {
       <div
         className="absolute -top-16 -left-16 w-64 h-64 rounded-full blur-3xl pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(107,229,190,0.15), transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(107,229,190,0.15), transparent 70%)",
           opacity: visible ? 1 : 0,
           transition: "opacity 1.2s ease",
         }}
@@ -72,7 +72,8 @@ export default function PhotoGallery() {
       <div
         className="absolute -bottom-16 -right-16 w-64 h-64 rounded-full blur-3xl pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(107,229,190,0.12), transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(107,229,190,0.12), transparent 70%)",
           opacity: visible ? 1 : 0,
           transition: "opacity 1.2s ease 0.2s",
         }}
@@ -116,8 +117,7 @@ export default function PhotoGallery() {
           {loopedPhotos.map((src, i) => (
             <div
               key={i}
-              className="relative flex-shrink-0 w-[320px] h-[220px] rounded-2xl overflow-hidden
-                         border border-[#6be5be]/15 shadow-lg hover:shadow-[0_0_20px_rgba(107,229,190,0.2)] hover:scale-105 transition-all duration-300"
+              className="relative flex-shrink-0 w-[320px] h-[220px] rounded-2xl overflow-hidden border border-[#6be5be]/15 shadow-lg hover:shadow-[0_0_20px_rgba(107,229,190,0.2)] hover:scale-105 transition-all duration-300"
             >
               <Image
                 src={src}
