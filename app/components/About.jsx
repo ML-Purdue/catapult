@@ -38,7 +38,7 @@ export default function About() {
       if (lottieRef.current) {
         lottieRef.current.goToAndPlay(0, true);
       }
-    }, 2000);
+    }, 5000);
   };
 
   return (
