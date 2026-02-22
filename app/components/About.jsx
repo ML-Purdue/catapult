@@ -72,17 +72,8 @@ export default function About() {
       {/* ——— Photo Gallery ——— */}
       <PhotoGallery />
 
-      <div className="mt-12 relative flex flex-col items-center justify-center text-center z-10">
-        <a
-            href="https://luma.com/mp8bovsd?utm_source=embed"
-            className="relative px-40 py-5 text-xl cursor-pointer backdrop-blur-md bg-[#6be5be]/25 border border-[#6be5be]/45 rounded-xl transition-all duration-300 ease-out hover:bg-[#6be5be]/40 hover:border-[#6be5be]/65 hover:shadow-[0_8px_32px_rgba(107,229,190,0.25)] hover:-translate-y-0.5 active:translate-y-0"
-          >
-            Apply Now!
-          </a>
-      </div>
-
       {/* ——— Categories ——— */}
-      <div className="relative flex flex-col items-center justify-center max-w-4xl text-center z-10 w-full">
+      <div className="relative flex mt-22 flex-col items-center justify-center max-w-4xl text-center z-10 w-full">
         <h1 className="text-5xl -mb-17 font-semibold">Categories</h1>
         <PrizeCategories />
       </div>
