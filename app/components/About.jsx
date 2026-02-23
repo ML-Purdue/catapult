@@ -103,8 +103,8 @@ export default function About() {
           <div className="flex gap-0 divide-x divide-[#6be5be]/20">
             {[
               { stat: "300+", label: "Attendees" },
-              { stat: "30+", label: "Ideas Launched" },
-              { stat: "25+", label: "Disciplines" },
+              { stat: "45+", label: "Ideas Launched" },
+              { stat: "11k+", label: "Cash Prizes" },
             ].map(({ stat, label }) => (
               <div key={label} className="flex flex-col items-center gap-1 px-10">
                 <span
