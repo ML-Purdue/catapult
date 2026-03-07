@@ -27,6 +27,11 @@ const sponsors = [
     url: "https://modal.com/"
   },
   {
+    name: "OpenAI",
+    logo: "/Sponsors/OpenAI-black-wordmark.svg",
+    url: "https://openai.com/"
+  },
+  {
     name: "Purdue Certificate in Entrepreneurship and Innovation",
     logo: "/Sponsors/CEI_H-Full-RGB_1.svg",
     url: "https://www.purdue.edu/entr/",
@@ -65,6 +70,11 @@ const sponsors = [
     name: "Wolfram",
     logo: "/Sponsors/wolfram.png",
     url: "https://www.wolfram.com/",
+  },
+  {
+    name: "World",
+    logo: "/Sponsors/worldcoin-orb-world-logo.svg",
+    url: "https://world.org/"
   },
 ];
 
