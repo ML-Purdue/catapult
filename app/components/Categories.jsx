@@ -131,6 +131,7 @@ const categories = [
     desc: "Most creative application built with World's developper tools (World ID, MiniKit, or World Chain) that leverages proof-of-persoonhood.",
     Icon: World,
     Prize: "Ray-Ban Meta Gen 2",
+    link: "https://world.org/developers",
   },
 ];
 
@@ -238,6 +239,25 @@ export default function PrizeCategories() {
                 >
                   Prize: {cat.Prize}
                 </p>
+
+                {cat.link && (
+                  <a
+                    href={cat.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontFamily: "var(--font-raleway), sans-serif",
+                      fontSize: "13px",
+                      fontWeight: 400,
+                      color: "rgba(61,191,154,0.85)",
+                      marginTop: "8px",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "3px",
+                    }}
+                  >
+                    More info here →
+                  </a>
+                )}
               </div>
             </SpotlightCard>
           );
