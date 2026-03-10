@@ -227,8 +227,8 @@ export default function PrizeCategories() {
                   {cat.desc}
                 </p>
 
-                {/* Prize line */}
-                <p
+                {/* Prize line - hidden for now */}
+                {/* <p
                   style={{
                     fontFamily: "var(--font-raleway), sans-serif",
                     fontSize: "16px",
@@ -238,7 +238,7 @@ export default function PrizeCategories() {
                   }}
                 >
                   Prize: {cat.Prize}
-                </p>
+                </p> */}
 
                 {cat.link && (
                   <a
