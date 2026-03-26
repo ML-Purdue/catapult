@@ -12,6 +12,7 @@ const scrollToSection = (sectionId) => {
 const navItems = [
   { label: "HOME", section: "home" },
   { label: "ABOUT", section: "about" },
+  { label: "MASTERDOC", section: "", href: "https://docs.google.com/document/d/1cdZyyj_9ZU6mplRu6fV5OFUR28FM9plUpdn5_EZumNU/" },
   { label: "SCHEDULE", section: "schedule" },
   { label: "FAQS", section: "faq" },
   { label: "SPONSORS", section: "sponsors" },
@@ -35,7 +36,11 @@ export default function NavBar() {
           {navItems.map((item) => (
             <button
               key={item.section}
-              onClick={() => scrollToSection(item.section)}
+              onClick={() => {
+                item.href
+                  ? window.open(item.href, "_blank")
+                  : scrollToSection(item.section);
+              }}
               className="relative px-6 py-1.5 cursor-pointer backdrop-blur-md bg-[#6be5be]/25 border border-[#6be5be]/45 rounded-full transition-all duration-300 ease-out hover:bg-[#6be5be]/40 hover:border-[#6be5be]/65 hover:shadow-[0_8px_32px_rgba(107,229,190,0.25)] hover:-translate-y-0.5 active:translate-y-0"
             >
               <span className="relative z-10 tracking-wide text-sm font-medium">
