@@ -227,19 +227,7 @@ export default function PrizeCategories() {
                   {cat.desc}
                 </p>
 
-                {/* Prize line - hidden for now */}
-                {/* <p
-                  style={{
-                    fontFamily: "var(--font-raleway), sans-serif",
-                    fontSize: "16px",
-                    fontWeight: 500,
-                    color: "rgba(61,191,154,0.85)",
-                    marginTop: "12px",
-                  }}
-                >
-                  Prize: {cat.Prize}
-                </p> */}
-
+                {/* More info line */}
                 {cat.link && (
                   <a
                     href={cat.link}
@@ -258,6 +246,20 @@ export default function PrizeCategories() {
                     More info here →
                   </a>
                 )}
+
+                {/* Prize line */}
+                <p
+                  style={{
+                    fontFamily: "var(--font-raleway), sans-serif",
+                    fontSize: "16px",
+                    fontWeight: 500,
+                    color: "rgba(61,191,154,0.85)",
+                    marginTop: "12px",
+                  }}
+                >
+                  Prize: {cat.Prize}
+                </p>
+
               </div>
             </SpotlightCard>
           );

@@ -171,7 +171,7 @@ const faqData = [
   {
     question: "How much does it cost?",
     answer:
-      "Nothing! Catapult is completely free to attend. We provide meals, snacks, swag, and everything you need for the weekend.",
+      "Nothing! Catapult is completely free to attend. We provide meals, snacks, (some) swag, and everything you need for the weekend.",
   },
   {
     question: "How does registration work?",
@@ -181,7 +181,7 @@ const faqData = [
   {
     question: "I wasn't accepted during registration. Can I still participate?",
     answer:
-      "Yes! Registration is mainly a limit on the number of students who will have a food badge since catering is our largest expense. Starting at 10:00PM on Friday, we will distribute any unclaimed food badges to unregistered participants on a first-come first-serve basis. Even if you are unable to secure a badge, you will still be permitted to submit a project.",
+      "Yes! Registration is mainly a limit on the number of students who will have a food badge since catering is our largest expense. Starting at 10:00PM on Friday, we will distribute any unclaimed food badges to unregistered participants on a first-come first-serve basis. Even if you are unable to secure a badge, you will still be permitted to submit a project/be in a team with registered participants.",
   },
   {
     question: "Do I need a team?",
@@ -191,7 +191,7 @@ const faqData = [
   {
     question: "What should I bring?",
     answer:
-      "Bring your laptop, charger, and anything you need to be comfortable for the weekend. We'll provide Wi-Fi, food, and a place to work.",
+      "Bring your laptop, charger, and anything you need to be comfortable for the weekend. We'll provide Wi-Fi, food, and a place to work (WALC).",
   },
   {
     question: "Where is it held?",
@@ -202,11 +202,6 @@ const faqData = [
     question: "What can I build?",
     answer:
       "Anything you want! Web apps, mobile apps, hardware hacks, games, AI projects — the sky's the limit. Projects will be judged on creativity, technical difficulty, design, and usefulness.",
-  },
-  {
-    question: "Will there be prizes?",
-    answer:
-      "Yes! We'll have prizes for overall winners as well as category-specific awards. Everyone who makes a genuine submission and attends our closing ceremony will also get a prize! Details will be announced at the opening ceremony.",
   },
   {
     question: "How will judging work?",

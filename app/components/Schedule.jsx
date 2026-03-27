@@ -215,32 +215,44 @@ const scheduleData = [
         time: "8:00 PM",
         title: "Check-In & Registration",
         description: "Arrive, get your badge and merch, and settle in.",
+        location: "BHEE 129",
+        rsvpLink: null,
       },
       {
         time: "9:00 PM",
         title: "Opening Ceremony",
         description: "Kickoff, rules, and schedule overview.",
+        location: "BHEE 129",
+        rsvpLink: null,
       },
       {
         time: "10:00 PM",
         title: "Start Hacking!",
         description: "The clock starts, begin building your project!",
+        location: "WALC",
+        rsvpLink: null,
       },
       {
         time: "10:00 PM",
         title: "Team Building",
         description: "Find teammates and brainstorm ideas.",
+        location: "WALC B093",
+        rsvpLink: "",
       },
       {
         time: "10:00 PM",
         title: "Walk-in check-ins",
         description:
           "Anyone not registered can check in and get unclaimed food badges.",
+        location: "WALC B074",
+        rsvpLink: null,
       },
       {
         time: "12:30 AM",
         title: "Midnight Pizza",
         description: "Fuel up with some midnight Pizza.",
+        location: "WALC B074",
+        rsvpLink: null,
       },
     ],
   },
@@ -251,37 +263,51 @@ const scheduleData = [
         time: "8:00 AM",
         title: "Breakfast",
         description: "Start the day with a full stomach.",
+        location: "WALC B074",
+        rsvpLink: null,
       },
       {
         time: "10:00 AM",
-        title: "Workshop",
-        description: "To be announced...",
+        title: "Workshop - UWorld",
+        description: "Workshop/Tech Talk by our sponsor UWorld",
+        location: "WALC B093",
+        rsvpLink: "https://luma.com/vce8xw5d",
       },
       {
         time: "12:00 PM",
         title: "Lunch",
         description: "Take a break and refuel.",
+        location: "WALC B074",
+        rsvpLink: null,
       },
       {
         time: "2:00 PM",
-        title: "Workshop",
-        description: "To be announced...",
+        title: "Workshop - Snowflake",
+        description: "Workshop/Tech Talk by our sponsor Snowflake",
+        location: "WALC B093",
+        rsvpLink: "https://luma.com/72s6lwtn",
       },
       {
         time: "4:00 PM",
-        title: "Workshop",
-        description: "To be announced...",
+        title: "Workshop - Codex",
+        description: "Workshop by our sponsor OpenAI",
+        location: "WALC B093",
+        rsvpLink: "https://luma.com/ofx5b5ji",
       },
       {
         time: "7:00 PM",
         title: "Dinner",
         description:
           "Dinner is served, keep that energy level up for the night.",
+        location: "WALC B074",
+        rsvpLink: null,
       },
       {
         time: "10:00 PM",
         title: "Late Night Activities",
         description: "Games, trivia, and more to keep you going.",
+        location: "WALC B093",
+        rsvpLink: null,
       },
     ],
   },
@@ -292,34 +318,46 @@ const scheduleData = [
         time: "8:00 AM",
         title: "Breakfast",
         description: "Last day fuel-up.",
+        location: "WALC B074",
+        rsvpLink: null,
       },
       {
         time: "9:00 AM",
         title: "Final Push",
         description:
           "Polish your project and prepare your video for submission.",
+        location: null,
+        rsvpLink: null,
       },
       {
         time: "10:00 AM",
         title: "Hacking Ends!",
         description: "Submit your project on Devpost.",
+        location: null,
+        rsvpLink: null,
       },
       {
         time: "10:00 AM",
-        title: "Judging Begins",
+        title: "Round 1: Judging Begins",
         description:
           "Judges will start watching the videos you submitted. It's time for you to relax.",
+        location: "Virtual",
+        rsvpLink: null,
       },
       {
         time: "1:00 PM",
         title: "Round 2: Shark Tank presentations",
         description:
           "Top 12 teams will present their project in a Shark-tank style to the audience and judges.",
+        location: "WALC 1055",
+        rsvpLink: null,
       },
       {
         time: "3:00 PM",
         title: "Closing Ceremony & Awards",
         description: "Winners are announced and awards distributed!",
+        location: "WALC 1055",
+        rsvpLink: null,
       },
     ],
   },
@@ -416,15 +454,58 @@ export default function Schedule() {
                     className={`ml-12 md:ml-0 md:w-[calc(50%-2rem)] ${isLeft ? "md:pr-4 md:text-right" : "md:pl-4 md:text-left"} group`}
                   >
                     <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] backdrop-blur-sm transition-all duration-300 ease-in-out hover:bg-[#6be5be]/[0.05] hover:border-[#6be5be]/20 hover:shadow-[0_0_20px_rgba(107,229,190,0.08)]">
-                      <span className="inline-block px-3 py-1 mb-2 rounded-full text-xs font-semibold tracking-wider bg-[#6be5be]/10 text-[#fff] border border-[#6be5be]/20">
-                        {event.time}
-                      </span>
+                      <div
+                        className={`flex items-center gap-2 flex-wrap mb-2 ${isLeft ? "md:justify-end" : "md:justify-start"}`}
+                      >
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider bg-[#6be5be]/10 text-[#fff] border border-[#6be5be]/20">
+                          {event.time}
+                        </span>
+                        {event.location && (
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider bg-[#6be5be]/10 text-[#fff] border border-[#6be5be]/20">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              className="w-3 h-3 text-[#6be5be]/70"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M9.69 18.933l.003.001C9.89 19.02 10 19 10 19s.11.02.308-.066l.002-.001.006-.003.018-.008a5.741 5.741 0 00.281-.14c.186-.096.446-.24.757-.433.62-.384 1.445-.966 2.274-1.765C15.302 14.988 17 12.493 17 9A7 7 0 103 9c0 3.492 1.698 5.988 3.355 7.584a13.731 13.731 0 002.273 1.765 11.842 11.842 0 00.976.544l.062.029.018.008.006.003zM10 11.25a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            {event.location}
+                          </span>
+                        )}
+                      </div>
                       <h3 className="text-white text-lg leading-snug font-[family-name:var(--font-unbounded)]">
                         {event.title}
                       </h3>
                       <p className="mt-1 text-white/40 text-sm leading-relaxed">
                         {event.description}
                       </p>
+                      {event.rsvpLink && (
+                        <a
+                          href={event.rsvpLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 mt-3 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide border border-[#6be5be]/30 text-[#6be5be] bg-[#6be5be]/[0.08] transition-all duration-300 hover:bg-[#6be5be]/20 hover:border-[#6be5be]/50 hover:shadow-[0_0_12px_rgba(107,229,190,0.2)]"
+                        >
+                          RSVP
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            className="w-3 h-3"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
