@@ -106,7 +106,7 @@ const categories = [
     title: "Best ML Project",
     desc: "Outstanding project built around a trained machine learning model.",
     Icon: BrainIcon,
-    Prize: "2000 GPU-Hours on RCAC H100-80GB",
+    Prize: "1500 RCAC GPU-Hours",
   },
   {
     title: "Most Promising Startup",
