@@ -219,7 +219,7 @@ const scheduleData = [
         rsvpLink: null,
       },
       {
-        time: "9:00 PM",
+        time: "9:15 PM",
         title: "Opening Ceremony",
         description: "Kickoff, rules, and schedule overview.",
         location: "BHEE 129",
