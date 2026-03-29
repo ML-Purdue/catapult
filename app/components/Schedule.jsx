@@ -243,7 +243,7 @@ const scheduleData = [
         time: "10:00 PM",
         title: "Walk-in check-ins",
         description:
-          "Anyone not registered can check in and get unclaimed food badges.",
+          "We will contact you by email in order of registration to distribute any unclaimed food badges.",
         location: "WALC B074",
         rsvpLink: null,
       },
