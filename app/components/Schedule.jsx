@@ -248,13 +248,6 @@ const scheduleData = [
         rsvpLink: null,
       },
       {
-        time: "11:00 PM",
-        title: "Workshop - RCAC",
-        description: "RCAC workshop to learn how to use the GPUs for your projects.",
-        location: "WALC 1055",
-        rsvpLink: "https://luma.com/p9gp62t8",
-      },
-      {
         time: "12:30 AM",
         title: "Midnight Pizza",
         description: "Fuel up with some midnight Pizza.",
@@ -274,11 +267,25 @@ const scheduleData = [
         rsvpLink: null,
       },
       {
+        time: "9:00 AM",
+        title: "Workshop - BuildPurdue",
+        description: "Workshop/Tech Talk by our partner BuildPurdue.",
+        location: "WALC 1055",
+        rsvpLink: "https://luma.com/39rehjkw",
+      },
+      {
         time: "10:00 AM",
         title: "Workshop - UWorld",
-        description: "Workshop/Tech Talk by our sponsor UWorld",
+        description: "Workshop/Tech Talk by our sponsor UWorld.",
         location: "WALC 1055",
         rsvpLink: "https://luma.com/vce8xw5d",
+      },
+      {
+        time: "11:00 AM",
+        title: "Workshop - RCAC",
+        description: "RCAC workshop to learn how to use the GPUs for your projects.",
+        location: "WALC 1055",
+        rsvpLink: "https://luma.com/p9gp62t8",
       },
       {
         time: "12:00 PM",
@@ -290,14 +297,14 @@ const scheduleData = [
       {
         time: "2:00 PM",
         title: "Workshop - Snowflake",
-        description: "Workshop/Tech Talk by our sponsor Snowflake",
+        description: "Workshop/Tech Talk by our sponsor Snowflake.",
         location: "WALC 1055",
         rsvpLink: "https://luma.com/72s6lwtn",
       },
       {
         time: "4:00 PM",
         title: "Workshop - Codex",
-        description: "Workshop by our sponsor OpenAI",
+        description: "Workshop by our sponsor OpenAI.",
         location: "WALC 1055",
         rsvpLink: "https://luma.com/ofx5b5ji",
       },

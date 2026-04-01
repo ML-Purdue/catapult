@@ -7,6 +7,11 @@ import RippleBackground from "./Circles";
 const sponsors = [
   { name: "Benevity", logo: "/Sponsors/ben.png", url: "https://benevity.com/" },
   {
+    name: "Build Purdue",
+    logo: "/Sponsors/buildpurdue.svg",
+    url: "https://www.buildpurdue.org/",
+  },
+  {
     name: "DataBricks",
     logo: "/Sponsors/databricks.svg",
     url: "https://www.databricks.com/",
@@ -21,21 +26,21 @@ const sponsors = [
     logo: "/Sponsors/Mad_Mushroom_Dark.png",
     url: "https://www.madmushroom.com/west-lafayette",
   },
-  {
-    name: "Modal",
-    logo: "/Sponsors/modal.png",
-    url: "https://modal.com/"
-  },
+  // {
+  //   name: "Modal",
+  //   logo: "/Sponsors/modal.png",
+  //   url: "https://modal.com/"
+  // },
   {
     name: "OpenAI",
     logo: "/Sponsors/OpenAI-black-wordmark.svg",
-    url: "https://openai.com/"
+    url: "https://openai.com/",
   },
-  {
-    name: "Purdue Certificate in Entrepreneurship and Innovation",
-    logo: "/Sponsors/CEI_H-Full-RGB_1.svg",
-    url: "https://www.purdue.edu/entr/",
-  },
+  // {
+  //   name: "Purdue Certificate in Entrepreneurship and Innovation",
+  //   logo: "/Sponsors/CEI_H-Full-RGB_1.svg",
+  //   url: "https://www.purdue.edu/entr/",
+  // },
   {
     name: "Purdue CS",
     logo: "/Sponsors/CompSci_H-Full-RGB.svg",
@@ -55,6 +60,11 @@ const sponsors = [
     name: "Ripple",
     logo: "/Sponsors/ripplelogo.svg",
     url: "https://ripple.com/",
+  },
+  {
+    name: "Scout by Katalon",
+    logo: "/Sponsors/Scout text-logo.png",
+    url: "https://scoutqa.ai/",
   },
   {
     name: "Snowflake",
