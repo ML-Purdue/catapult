@@ -236,7 +236,7 @@ const scheduleData = [
         time: "10:00 PM",
         title: "Team Building",
         description: "Find teammates and brainstorm ideas.",
-        location: "WALC B093",
+        location: "WALC B074",
         rsvpLink: null,
       },
       {
@@ -244,7 +244,7 @@ const scheduleData = [
         title: "Walk-in check-ins",
         description:
           "We will contact you by email in order of registration to distribute any unclaimed food badges.",
-        location: "WALC B074",
+        location: "WALC B093",
         rsvpLink: null,
       },
       {
