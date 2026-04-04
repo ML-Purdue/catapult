@@ -171,7 +171,7 @@ const faqData = [
   {
     question: "How much does it cost?",
     answer:
-      "Nothing! Catapult is completely free to attend. We provide meals, snacks, (some) swag, and everything you need for the weekend.",
+      "Nothing! Catapult is completely free to attend. We provide meals, (some) swag, and everything you need for the weekend.",
   },
   {
     question: "How does registration work?",
