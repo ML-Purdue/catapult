@@ -101,30 +101,50 @@ const categories = [
     desc: "Awarded to the team with the most outstanding project, considering innovation, execution, and impact.",
     Icon: TrophyIcon,
     Prize: "MacBook Neo",
+    winner: {
+      name: "Team RoboLense",
+      link: "https://devpost.com/software/robolens",
+    },
   },
   {
     title: "Best ML Project",
     desc: "Outstanding project built around a trained machine learning model.",
     Icon: BrainIcon,
     Prize: "RCAC GPU-Hours",
+    winner: {
+      name: "VIE",
+      link: "https://devpost.com/software/vie-4d65zb",
+    },
   },
   {
     title: "Most Promising Startup",
     desc: "Project with the strongest potential for real world impact, scalability, or business viability.",
     Icon: RocketIcon,
     Prize: "Bose SoundLink Micro Speaker",
+    winner: {
+      name: "SIQUR",
+      link: "https://devpost.com/software/watchman-zifchr",
+    },
   },
   {
     title: "Best Automation",
     desc: "Project that best streamlines a manual or repetitive process through clever automation.",
     Icon: GlobeIcon,
     Prize: "Sony XM5 Headphones",
+    winner: {
+      name: "KeyGuard",
+      link: "https://devpost.com/software/keyguard",
+    },
   },
   {
     title: "Best Use of Hardware",
     desc: "Project that best incorporates AI with physical devices, robotics, sensors, or other hardware.",
     Icon: RobotIcon,
     Prize: "Raspberry Pi 5 kit",
+    winner: {
+      name: "SANSight",
+      link: "https://devpost.com/software/sansight",
+    },
   },
   {
     title: "Best Proof-of-Human Application",
@@ -132,6 +152,10 @@ const categories = [
     Icon: World,
     Prize: "Ray-Ban Meta Gen 2",
     link: "https://world.org/developers",
+    winner: {
+      name: "Veritas",
+      link: "https://devpost.com/software/veritas-81fzu6",
+    },
   },
 ];
 
@@ -259,7 +283,24 @@ export default function PrizeCategories() {
                 >
                   Prize: {cat.Prize}
                 </p>
-
+                {cat.winner && (
+                  <a
+                    href={cat.winner.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontFamily: "var(--font-raleway), sans-serif",
+                      fontSize: "16px",
+                      fontWeight: 500,
+                      color: "#fff",
+                      marginTop: "12px",
+                      textDecoration: "underline",
+                      textUnderlineOffset: "3px",
+                    }}
+                  >
+                    🏆 {cat.winner.name}
+                  </a>
+                )}
               </div>
             </SpotlightCard>
           );
