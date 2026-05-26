@@ -8,7 +8,7 @@ import PhotoGallery from "./PhotoGallery";
 import Lottie from "lottie-react";
 import catapultAnimation from "../animations/catapult-load.json";
 
-export default function About() {
+export default function About({ photos }) {
   const [play, setPlay] = useState(false);
   const lottieRef = useRef(null);
   const sectionRef = useRef(null);
@@ -129,7 +129,7 @@ export default function About() {
       </div>
 
       {/* ——— Photo Gallery ——— */}
-      <PhotoGallery />
+      <PhotoGallery photos={photos} />
 
       {/* ——— Categories ——— */}
       <div className="mt-25 relative z-10 flex flex-col items-center justify-center max-w-4xl text-center w-full">

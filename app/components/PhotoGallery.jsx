@@ -3,28 +3,13 @@
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 
-const photos = [
-  "/Photos/DSCN8073.JPG",
-  "/Photos/DSCN8076.JPG",
-  "/Photos/DSCN8077.JPG",
-  "/Photos/DSCN8078.JPG",
-  "/Photos/DSCN8080.JPG",
-  "/Photos/DSCN8081.JPG",
-  "/Photos/DSCN8082.JPG",
-  "/Photos/DSCN8083.JPG",
-  "/Photos/DSCN8084.JPG",
-  "/Photos/DSCN8090.JPG",
-  "/Photos/DSCN8091.JPG",
-  "/Photos/DSCN8094.JPG",
-];
-
-// duplicate the list so the scroll loop feels seamless
-const loopedPhotos = [...photos, ...photos];
-
-export default function PhotoGallery() {
+export default function PhotoGallery({ photos = [] }) {
   const trackRef = useRef(null);
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
+
+  // duplicate the list so the scroll loop feels seamless
+  const loopedPhotos = [...photos, ...photos];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
